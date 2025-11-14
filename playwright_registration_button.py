@@ -6,17 +6,16 @@ with sync_playwright() as playwright:
 
     page.goto("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/registration")
 
+    registration_button = page.get_by_test_id("registration-page-registration-button")
+    expect(registration_button).to_be_disabled()
+
     email_input = page.get_by_test_id("registration-form-email-input").locator("input")
     email_input.fill("user.name@gmail.com")
 
-    user_name_input = page.get_by_test_id("registration-form-username-input").locator("input")
-    user_name_input.fill("username")
+    username_input = page.get_by_test_id("registration-form-username-input").locator("input")
+    username_input.fill("username")
 
     password_input = page.get_by_test_id("registration-form-password-input").locator("input")
-    password_input.fill("registration-form-password-input")
+    password_input.fill("password")
 
-    registration_button = page.get_by_test_id("registration-page-registration-button")
-    registration_button.click()
-
-    check_dashboard = page.get_by_test_id("dashboard-toolbar-title-text")
-    expect(check_dashboard).to_be_visible()
+    expect(registration_button).to_be_enabled()
