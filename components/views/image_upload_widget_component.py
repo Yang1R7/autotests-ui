@@ -6,7 +6,6 @@ from elements.button import Button
 from elements.file_input import FileInput
 from elements.icon import Icon
 from elements.image import Image
-from elements.input import Input
 from elements.text import Text
 
 
