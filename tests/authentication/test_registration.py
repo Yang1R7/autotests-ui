@@ -1,3 +1,5 @@
+import time
+
 import allure
 import pytest
 
@@ -40,3 +42,4 @@ class TestRegistration:
         registration_page.click_registration_button()
 
         dashboard_page.dashboard_toolbar_view.check_visible()
+

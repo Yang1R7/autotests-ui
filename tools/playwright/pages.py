@@ -1,23 +1,27 @@
 import allure
 from playwright.async_api import Page
 from playwright.sync_api import Playwright
-from config import settings
+from config import settings, Browser
+from tools.playwright.mocks import mock_static_resources
 
 
 def initialize_playwright_page(
         test_name: str,
         playwright: Playwright,
+        browser_type: Browser,
         storage_state: str | None = None
 ) -> Page:
-    browser = playwright.chromium.launch(headless=settings.headless)
+    browser = playwright[browser_type].launch(headless=settings.headless)
     context = browser.new_context(
         storage_state=storage_state,
         record_video_dir=settings.videos_dir,
-        base_url = settings.get_base_url()
+        base_url=settings.get_base_url()
     )
     context.tracing.start(screenshots=True, snapshots=True, sources=True)
 
     page = context.new_page()
+    mock_static_resources(page)
+
     yield page
 
     context.tracing.stop(path=settings.tracing_dir.joinpath(f"{test_name}.zip"))

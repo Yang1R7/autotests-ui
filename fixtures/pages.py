@@ -8,30 +8,30 @@ from pages.authentication.registration_page import RegistrationPage
 
 
 @pytest.fixture(scope="function")
-def login_page(chromium_page) -> LoginPage:
-    return LoginPage(page=chromium_page)
+def login_page(page) -> LoginPage:
+    return LoginPage(page=page)
 
 
 @pytest.fixture(scope="function")
-def dashboard_page(chromium_page) -> DashboardPage:
-    return DashboardPage(page=chromium_page)
+def dashboard_page(page) -> DashboardPage:
+    return DashboardPage(page=page)
 
 
 @pytest.fixture(scope="function")
-def dashboard_page_with_state(chromium_page_with_state) -> DashboardPage:
-    return DashboardPage(page=chromium_page_with_state)
+def dashboard_page_with_state(page_with_state) -> DashboardPage:
+    return DashboardPage(page=page_with_state)
 
 
 @pytest.fixture(scope="function")
-def registration_page(chromium_page) -> RegistrationPage:
-    return RegistrationPage(page=chromium_page)
+def registration_page(page) -> RegistrationPage:
+    return RegistrationPage(page=page)
 
 
 @pytest.fixture(scope="function")
-def courses_list_page(chromium_page_with_state) -> CoursesListPage:
-    return CoursesListPage(page=chromium_page_with_state)
+def courses_list_page(page_with_state) -> CoursesListPage:
+    return CoursesListPage(page=page_with_state)
 
 
 @pytest.fixture(scope="function")
-def create_course_page(chromium_page_with_state) -> CreateCoursePage:
-    return CreateCoursePage(page=chromium_page_with_state)
+def create_course_page(page_with_state) -> CreateCoursePage:
+    return CreateCoursePage(page=page_with_state)
